@@ -20,7 +20,7 @@ namespace BFM
 
       private void Awake()
       {
-          cameraHandler = CameraHandler.singleton;
+          cameraHandler = FindObjectOfType<CameraHandler>();
       }
 
       void Start()
@@ -34,7 +34,10 @@ namespace BFM
       void Update()
       {
           float delta = Time.deltaTime;
+
           isInteracting = anim.GetBool("isInteracting");
+          //inputHandler.rollFlag = false;
+          //inputHandler.sprintFlag = false; 
 
           inputHandler.TickInput(delta);
           playerLocomotion.HandleMovement(delta);

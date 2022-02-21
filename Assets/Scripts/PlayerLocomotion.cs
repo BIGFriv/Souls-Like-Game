@@ -140,6 +140,7 @@ namespace BFM
 
               if (inputHandler.moveAmount > 0)
               {
+            
                   animatorHandler.PlayTargetAnimation("Rolling", true);
                   moveDirection.y = 0;
                   Quaternion rollRotation = Quaternion.LookRotation(moveDirection);
@@ -221,19 +222,17 @@ namespace BFM
                   playerManager.isInAir = true;
               }
           }
-
-        //  if(playerManager.isGrounded)
-        //  {
-              if(playerManager.isInteracting || inputHandler.moveAmount > 0)
-              {
-                  myTransform.position = Vector3.Lerp(myTransform.position, targetPosition, Time.deltaTime);
-              }
-              else
-              {
-                  myTransform.position = targetPosition;
-              }
-        //  }
-
+            if (playerManager.isGrounded)
+            {
+                if (playerManager.isInteracting || inputHandler.moveAmount > 0)
+                {
+                    myTransform.position = Vector3.Lerp(myTransform.position, targetPosition, Time.deltaTime / 0.1f);
+                }
+                else
+                {
+                    myTransform.position = targetPosition;
+                }
+            }
       }
 
 

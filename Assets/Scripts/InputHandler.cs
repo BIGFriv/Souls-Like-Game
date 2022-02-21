@@ -23,6 +23,7 @@ namespace BFM
         PlayerControls inputActions;
         PlayerAttacker playerAttacker;
         PlayerInventory playerInventory;
+        PlayerManager playerManager;
 
         Vector2 movementInput;
         Vector2 cameraInput;
@@ -31,6 +32,7 @@ namespace BFM
         {
             playerAttacker = GetComponent<PlayerAttacker>();
             playerInventory = GetComponent<PlayerInventory>();
+            playerManager = GetComponent<PlayerManager>();
         }
 
         public void OnEnable()
@@ -89,6 +91,9 @@ namespace BFM
 
         private void HandleAttackInput(float delta)
         {
+            if (playerManager.isInteracting)
+                return;
+
             inputActions.PlayerActions.RB.performed += i => rb_Input = true;
             inputActions.PlayerActions.RT.performed += i => rt_Input = true;
 
