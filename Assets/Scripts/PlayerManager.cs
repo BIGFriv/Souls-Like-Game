@@ -36,8 +36,6 @@ namespace BFM
           float delta = Time.deltaTime;
 
           isInteracting = anim.GetBool("isInteracting");
-          //inputHandler.rollFlag = false;
-          //inputHandler.sprintFlag = false; 
 
           inputHandler.TickInput(delta);
           playerLocomotion.HandleMovement(delta);
