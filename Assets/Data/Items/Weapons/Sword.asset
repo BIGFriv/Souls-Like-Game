@@ -17,4 +17,5 @@ MonoBehaviour:
   modelPrefab: {fileID: 7671900779485101257, guid: f6cac24fa4a1e8f4eb1ed2969bb51c64, type: 3}
   isUnarmed: 0
   OH_Light_Attack_1: OH_Light_Attack_01
+  OH_Light_Attack_2: OH_Light_Attack_02
   OH_Heavy_Attack_1: OH_Heavy_Attack_01

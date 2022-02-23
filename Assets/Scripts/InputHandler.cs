@@ -18,6 +18,7 @@ namespace BFM
 
         public bool rollFlag;
         public bool sprintFlag;
+        public bool comboFlag;
         public float rollInputTimer;
 
         PlayerControls inputActions;
@@ -99,11 +100,28 @@ namespace BFM
 
             if(rb_Input)
             {
-                playerAttacker.HandleLightAttack(playerInventory.rightWeapon);
+                if(playerManager.canDoCombo)
+                {
+                    comboFlag = true;
+                    playerAttacker.HandleWeaponCombo(playerInventory.rightWeapon);
+                    comboFlag = false;
+                }
+                else
+                {
+                    if (playerManager.isInteracting)
+                        return;
+
+                    if (playerManager.canDoCombo)
+                        return;
+                    playerAttacker.HandleLightAttack(playerInventory.rightWeapon);
+                }
             }
 
             if(rt_Input)
             {
+                if (playerManager.isInteracting)
+                    return;
+
                 playerAttacker.HandleHeavyAttack(playerInventory.rightWeapon);
             }
         }
